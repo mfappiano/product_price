@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    root: info
+    org:
+      flywaydb: debug
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: product-price
+  datasource:
+    url: jdbc:h2:file:~/product_price_db;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;MODE=MySQL;TIME ZONE=UTC
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+      default_schema: product-price
+  jackson:
+    time-zone: UTC
+  h2:
+    console:
+      enabled: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: jdbc:h2:file:~/product_price_db;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;MODE=MySQL;TIME ZONE=UTC
+    user: sa
+    password: sa
